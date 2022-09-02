@@ -5,11 +5,7 @@ import {
   View,
   Image,
   TextInput,
-  Button,
-  Modal,
-  Alert,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 import React, {Component, useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -18,8 +14,11 @@ import Left from 'react-native-vector-icons/AntDesign';
 // import {Checkbox} from 'react-native-paper';
 import CheckBox from '@react-native-community/checkbox';
 import Home from './Home';
+import ImagePicker ,{openPicker} from 'react-native-image-crop-picker';
+import Screen from './Screen';
 
-const App = ({navigation}) => {
+const App = (props) => {
+  const {navigation}=props;
   // const myAlert = ({}) =>Alert.alert("Hurray ! You got 1 month Plus membership worth ₹999 for free",
   // "Enjoy the plus features and earn more everyday",
   //       [
@@ -31,8 +30,37 @@ const App = ({navigation}) => {
   //         { text: "OK",  onPress: () => navigation.navigate("Booking") }
   //       ]
   //     );
-
+ 
   
+ 
+    // const [uri, setUri] = React.useState(props.source?.uri || undefined);
+    // const pickPicture = () => {
+    //   ImagePicker.openPicker({
+    //     width: 500,
+    //     height: 500,
+    //     // cropping: true,
+    //   }).then((image) => {
+    //     setUri(image.path);
+    //     props.onChange?.(image);
+    //   });
+    // };
+    
+      
+   
+
+
+
+
+//   const openPicker = () => 
+//   ImagePicker.openPicker({
+//       width: 300,
+//       height: 400,
+//       cropping: true,
+//       includeBase64: true
+//   }).then(image => {("", { img : image });
+  
+//     //  console.log();
+// });
 
   const [modal, setmodal] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -54,6 +82,7 @@ const App = ({navigation}) => {
                 marginTop: 10,
                 marginLeft: 25,
               }}>
+             
               <Left
                 name="left"
                 size={18}
@@ -70,6 +99,7 @@ const App = ({navigation}) => {
           </TouchableOpacity>
           <Image
             source={require('./images/Logo.png')}
+           
             style={{
               height: 28,
               width: 140,
@@ -88,22 +118,36 @@ const App = ({navigation}) => {
           />
         </View>
 
-        <View style={[style.row]}>
+        {/* <View style={[style.row]}>
+        <TouchableOpacity  onPress={openPicker}>
           <View style={[style.box]}>
-            <AntDesign name="pluscircle" size={30} color="#5E17EB" />
-            <Text style={{margin: 3, color: '#8C52FF', fontSize: 12}}>
+            <AntDesign name="pluscircle" size={30} color="#5E17EB" style={{position:'absolute',top:50}}/>
+            <Text style={{margin: 3, color: '#8C52FF', fontSize: 12,top:60}}>
               Front Picture
             </Text>
+            <TouchableOpacity onPress={pickPicture}>
+        <Image
+          style={style.avatar}
+          {...props}
+          source={uri ? { uri } : props.source}
+        />
+      </TouchableOpacity>
           </View>
+          </TouchableOpacity>
 
+<TouchableOpacity onPress={openPicker}>
           <View style={[style.box]}>
             <AntDesign name="pluscircle" size={30} color="#5E17EB" />
             <Text style={{margin: 3, color: '#8C52FF', fontSize: 12}}>
               Back Picture
             </Text>
           </View>
-        </View>
-
+          </TouchableOpacity>
+        </View> */}
+        <View style={{marginLeft:20,flexDirection:'row',justifyContent:'space-evenly'}}>
+<Screen/>
+<Screen/>
+</View>
         <View>
           <View style={{bottom: 30, marginLeft: 10}}>
             <CheckBox
@@ -129,7 +173,7 @@ const App = ({navigation}) => {
             </Text>
           </View>
         </View>
-
+        
         <View style={style.footer}>
           {/* <View> */}
           <TouchableOpacity
@@ -144,6 +188,7 @@ const App = ({navigation}) => {
 
          
         </View>
+
       </View>
     </ScrollView>
   );
@@ -210,13 +255,23 @@ const style = StyleSheet.create({
     // margin: 10,
     justifyContent: 'space-evenly',
     backgroundColor: '#fff',
-    marginBottom: 250,
+    marginBottom: 270,
   },
   modalcontainer: {
     flex: 1,
     backgroundColor: '#161616CC',
 
     // alignItems: 'center',
+  },
+  avatar: {
+    // paddingTop: 20,
+    height: 130,
+    width: 130,
+    bottom:9,
+    // backgroundColor:'red',
+    // position:'absolute',
+    // borderRadius: 100,
+    // padding: 20,
   },
   modalview: {
     flex:0.6,

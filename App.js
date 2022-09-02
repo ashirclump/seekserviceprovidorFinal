@@ -11,6 +11,7 @@ import RegisterBank from './RegisterBank'
 import Registeradhaar from './Registeradhaar'
 import RegisterPan from './RegisterPan'
 import Home from './Home';
+import Demo from './Demo'
 const Stack = createNativeStackNavigator()
 
 export default function App() {
@@ -19,16 +20,17 @@ export default function App() {
     <>
       <PaperProvider>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator >
+        {/* <Stack.Screen  options={{ headerShown: false }}  name="Demo" component={Demo} /> */}
           <Stack.Screen  options={{ headerShown: false }} name="RegisterFirst" component={RegisterFirst}/>
 
-          <Stack.Screen  options={{ headerShown: false }}  name="RegisterSecond" component={RegisterSecond} color="yellow"/>
+          <Stack.Screen  options={{ headerShown: false }}  name="RegisterSecond" component={RegisterSecond}/>
 
-          <Stack.Screen  options={{ headerShown: false }} name="RegisterBank" component={RegisterBank} color='blue' />
+          <Stack.Screen  options={{ headerShown: false }} name="RegisterBank" component={RegisterBank} />
 
-          <Stack.Screen  options={{ headerShown: false }} name="Registeradhaar" component={Registeradhaar} color='blue' />
+          <Stack.Screen  options={{ headerShown: false }} name="Registeradhaar" component={Registeradhaar}  />
 
-          <Stack.Screen  options={{ headerShown: false }}  name= "RegisterPan" component={RegisterPan} color="yellow"/>
+          <Stack.Screen  options={{ headerShown: false }}  name= "RegisterPan" component={RegisterPan}/>
 
           <Stack.Screen  options={{ headerShown: false }}  name="Home" component={Home} />
           
