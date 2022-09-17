@@ -11,17 +11,29 @@ import RegisterBank from './RegisterBank'
 import Registeradhaar from './Registeradhaar'
 import RegisterPan from './RegisterPan'
 import Home from './Home';
-import Demo from './Demo'
+import Demo from './Demo';
+// import io from  'socket.io-client';
+
+// let socket = io("http://13.126.187.109:4000", 
+// { rejectUnauthorized: false });
+// socket.on("orderPlaced", (data) => {
+//   console.log(data);
+// });
+
+
 const Stack = createNativeStackNavigator()
 
-export default function App() {
-  // const newLocal = "A";
+function App() {
+  
   return (
-    <>
-      <PaperProvider>
+   
+      
       <NavigationContainer>
-        <Stack.Navigator >
-        {/* <Stack.Screen  options={{ headerShown: false }}  name="Demo" component={Demo} /> */}
+        <Stack.Navigator 
+        initialRouteName='Demo'
+        >
+        <Stack.Screen  options={{ headerShown: false }}  name="Demo" component={Demo} />
+
           <Stack.Screen  options={{ headerShown: false }} name="RegisterFirst" component={RegisterFirst}/>
 
           <Stack.Screen  options={{ headerShown: false }}  name="RegisterSecond" component={RegisterSecond}/>
@@ -36,8 +48,9 @@ export default function App() {
           
         </Stack.Navigator>
     </NavigationContainer>
-    </PaperProvider>
-    </>
+    
+   
     
   );
 }
+export default App;
